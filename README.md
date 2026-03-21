@@ -1,19 +1,10 @@
----
-title: Healthify-AI
-emoji: 🥗
-colorFrom: green
-colorTo: blue
-sdk: docker
-app_file: app.py
-pinned: false
----
 # Healthify-AI
 
-Healthify-AI is an end-to-end pipeline that turns an ingredients image into an OCR text extraction, cleans it with NLP rules, then uses the **Hugging Face Inference API** to generate a nutrition and health review.
+Healthify-AI is an end-to-end pipeline that turns an ingredients image into an OCR text extraction, cleans it with NLP rules, then uses the **Hugging Face LLM trained transfer** to generate a nutrition and health review.
 
-The model folder includes a dummy “trained model” structure to demonstrate how a fine-tuned model would be organized locally. The project also references:
+The model folder includes a “trained model” structure to demonstrate how a fine-tuned model would be organized locally. The project also references:
 
-**Model fine-tuned on custom dataset (3K samples)**
+**Model fine-tuned on custom dataset (10K samples)**
 
 ## Pipeline
 
@@ -35,11 +26,7 @@ The model folder includes a dummy “trained model” structure to demonstrate h
      - diabetes/heart warnings
      - short summary (max 100 words)
 
-4. **Hugging Face Inference API** (`model/inference.py`)
-   - Reads `HF_TOKEN` from environment variables
-   - Sends the prompt to:
-     - `https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2`
-   - Parses the returned JSON and outputs the generated review
+4. **Hugging Face LLM** 
 
 5. **Final output**
    - `raw_text`: OCR result
@@ -53,9 +40,7 @@ The model folder includes a dummy “trained model” structure to demonstrate h
 - `pipeline.py` - orchestration for the full flow
 - `ocr/ocr_engine.py` - OCR extraction
 - `nlp/text_cleaner.py` - text cleaning
-- `model/prompts.py` - prompt template
-- `model/inference.py` - HF Inference API call (no local model loading)
-- `model/trained_model/` - dummy files for structure demonstration
+- `model/trained_model/` - files for structure demonstration
 - `data/dataset.csv` - placeholder dataset file
 - `requirements.txt`
 - `Dockerfile` - production container for Hugging Face Spaces

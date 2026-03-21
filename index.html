@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NutriScan</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="header">
+        <div class="logo">NS</div>
+        <div>
+          <h1>NutriScan</h1>
+          <p class="lead">Ingredient OCR -> Clean -> Mistral review (HF Inference API)</p>
+        </div>
+      </header>
+
+      <div class="grid">
+        <div class="card">
+          <div class="uploader">
+            <label for="fileInput" class="upload-label">
+              <div class="preview" id="preview"> <span class="muted">Upload image</span></div>
+              <input type="file" id="fileInput" accept="image/*" />
+            </label>
+
+            <div class="actions">
+              <button class="btn" id="pickBtn" type="button">Upload photo</button>
+              <button class="btn primary" id="analyzeBtn" type="button" disabled>Analyze</button>
+            </div>
+
+            <div class="hint">Tip: clear, close-up photos of the ingredient list work best.</div>
+          </div>
+        </div>
+
+        <aside class="card results">
+          <h3>Outputs</h3>
+          <div class="section">
+            <div class="label">Extracted Text</div>
+            <textarea id="rawText" class="output" readonly></textarea>
+          </div>
+          <div class="section">
+            <div class="label">Cleaned Text</div>
+            <textarea id="cleanText" class="output" readonly></textarea>
+          </div>
+          <div class="section">
+            <div class="label">Health Review</div>
+            <pre id="reviewText" class="output pre"></pre>
+          </div>
+
+          <div class="endpoint-note">
+            Backend: <code>/api/analyze</code> (POST multipart/form-data, field name: <code>image</code>)
+          </div>
+        </aside>
+      </div>
+
+      <footer>
+        Foodoooo — educational demo. Not medical advice.
+      </footer>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
+

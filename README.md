@@ -2,7 +2,7 @@
 
 Healthify-AI is an end-to-end pipeline that turns an ingredients image into an OCR text extraction, cleans it with NLP rules, then uses the **Hugging Face LLM trained transfer** to generate a nutrition and health review.
 
-The model folder includes a “trained model” structure to demonstrate how a fine-tuned model would be organized locally. The project also references:
+The model folder includes a “trained model” structure to demonstrate how a fine-tuned model would be organized locally.Model name is "healtifyai-base-lora-merged". The project also references:
 
 **Model fine-tuned on custom dataset (10K samples)**
 
